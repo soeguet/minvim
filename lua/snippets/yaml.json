@@ -1,0 +1,265 @@
+{
+  "k8s-service_external_IP": {
+    "prefix": "k8s-service_external_IP",
+    "body": [
+      "apiVersion: v1",
+      "kind: Service",
+      "metadata:",
+      "  name: my-service",
+      "spec:",
+      "  selector:",
+      "    app.kubernetes.io/name: MyApp",
+      "  ports:",
+      "    - name: http",
+      "      protocol: TCP",
+      "      port: 80",
+      "      targetPort: 49152",
+      "  externalIPs:",
+      "    - 198.51.100.32"
+    ]
+  },
+  "k8s-value_from_configMap": {
+    "prefix": "k8s-value_from_configMap",
+    "body": [
+      "- name: ${1:osmose}",
+      "  valueFrom:",
+      "    configMapKeyRef:",
+      "      name: ${2:osmans-config-map}",
+      "      key: ${1:osmose}"
+    ]
+  },
+  "k8s-service_ExternalName": {
+    "prefix": "k8s-service_ExternalName",
+    "body": [
+      "# A Service of type: ExternalName accepts an IPv4 address string, but treats that string as a DNS",
+      "# name comprised of digits, not as an IP address (the internet does not however allow such names",
+      "# in DNS). Services with external names that resemble IPv4 addresses are not resolved by DNS servers.",
+      "apiVersion: v1",
+      "kind: Service",
+      "metadata:",
+      "  name: my-service",
+      "  namespace: prod",
+      "spec:",
+      "  type: ExternalName",
+      "  externalName: my.database.example.com"
+    ]
+  },
+  "k8s-service_NodePort": {
+    "prefix": "k8s-service_NodePort",
+    "body": [
+      "apiVersion: v1",
+      "kind: Service",
+      "metadata:",
+      "  name: my-service",
+      "spec:",
+      "  type: NodePort",
+      "  selector:",
+      "    app.kubernetes.io/name: MyApp",
+      "  ports:",
+      "    - port: 80",
+      "      # By default and for convenience, the `targetPort` is set to",
+      "      # the same value as the `port` field.",
+      "      targetPort: 80",
+      "      # Optional field",
+      "      # By default and for convenience, the Kubernetes control plane",
+      "      # will allocate a port from a range (default: 30000-32767)",
+      "      nodePort: 30007"
+    ]
+  },
+  "k8s-service_LoadBalancer": {
+    "prefix": "k8s-service_LoadBalancer",
+    "body": [
+      "apiVersion: v1",
+      "kind: Service",
+      "metadata:",
+      "  name: my-service",
+      "spec:",
+      "  selector:",
+      "    app.kubernetes.io/name: MyApp",
+      "  ports:",
+      "    - protocol: TCP",
+      "      port: 80",
+      "      targetPort: 9376",
+      "  clusterIP: 10.0.171.239",
+      "  type: LoadBalancer",
+      "status:",
+      "  loadBalancer:",
+      "    ingress:",
+      "    - ip: 192.0.2.127"
+    ]
+  },
+  "k8s-secret": {
+    "prefix": "k8s-secret",
+    "body": [
+      "apiVersion: v1",
+      "data:",
+      "  password: XXX",
+      "  username: XXX",
+      "kind: Secret",
+      "metadata:",
+      "  name: db-user-pass",
+      "  namespace: default",
+      "type: Opaque"
+    ]
+  },
+  "k8s-service_without_selector": {
+    "prefix": "k8s-service_without_selector",
+    "body": [
+      "apiVersion: v1",
+      "kind: Service",
+      "metadata:",
+      "  name: my-service",
+      "spec:",
+      "  ports:",
+      "    - name: http",
+      "      protocol: TCP",
+      "      port: 80",
+      "      targetPort: 9376"
+    ]
+  },
+  "k8s-service": {
+    "prefix": "k8s-service",
+    "body": [
+      "apiVersion: v1",
+      "kind: Service",
+      "metadata:",
+      "  name: my-service",
+      "  namespace: default",
+      "spec:",
+      "  selector:",
+      "    app.kubernetes.io/name: MyApp",
+      "  ports:",
+      "    - protocol: TCP",
+      "      port: 80",
+      "      targetPort: 9376"
+    ]
+  },
+  "k8s-configMap_simple": {
+    "prefix": "k8s-configMap_simple",
+    "body": [
+      "# A ConfigMap is an API object used to store non-confidential ",
+      "# data in key-value pairs. Pods can consume ConfigMaps as environment ",
+      "# variables, command-line arguments, or as configuration files in a volume.",
+      "",
+      "# A ConfigMap allows you to decouple environment-specific configuration ",
+      "# from your container images, so that your applications are easily portable.",
+      "---",
+      "apiVersion: v1",
+      "kind: ConfigMap",
+      "metadata:",
+      "  name: myconfigmap",
+      "data:",
+      "  username: k8s-admin",
+      "  access_level: \"1\""
+    ]
+  },
+  "k8s-value_from_secretKey": {
+    "prefix": "k8s-value_from_secretKey",
+    "body": [
+      "- name: ${1:osmose}",
+      "  valueFrom:",
+      "    secretKeyRef:",
+      "      name: ${2:osmose-secrets}",
+      "      key: ${1:osmose}"
+    ]
+  },
+  "k8s-service_multi_port": {
+    "prefix": "k8s-service_multi_port",
+    "body": [
+      "apiVersion: v1",
+      "kind: Service",
+      "metadata:",
+      "  name: my-service",
+      "spec:",
+      "  selector:",
+      "    app.kubernetes.io/name: MyApp",
+      "  ports:",
+      "    - name: http",
+      "      protocol: TCP",
+      "      port: 80",
+      "      targetPort: 9376",
+      "    - name: https",
+      "      protocol: TCP",
+      "      port: 443",
+      "      targetPort: 9377"
+    ]
+  },
+  "k8s-ingress": {
+    "prefix": "k8s-ingress",
+    "body": [
+      "apiVersion: networking.k8s.io/v1",
+      "kind: Ingress",
+      "metadata:",
+      "  name: minimal-ingress",
+      "  annotations:",
+      "    nginx.ingress.kubernetes.io/rewrite-target: /",
+      "spec:",
+      "  ingressClassName: nginx-example",
+      "  rules:",
+      "  - http:",
+      "      paths:",
+      "      - path: /testpath",
+      "        pathType: Prefix",
+      "        backend:",
+      "          service:",
+      "            name: test",
+      "            port:",
+      "              number: 80"
+    ]
+  },
+  "k8s-deployment": {
+    "prefix": "k8s-deployment",
+    "body": [
+      "apiVersion: apps/v1",
+      "kind: Deployment",
+      "metadata:",
+      "  name: ${1:nginx}-deployment",
+      "  namespace: ${2:default}",
+      "spec:",
+      "  selector:",
+      "    matchLabels:",
+      "      app: ${1:nginx}",
+      "  replicas: ${3:1}",
+      "  template:",
+      "    metadata:",
+      "      labels:",
+      "        app: ${1:nginx}",
+      "    spec:",
+      "      containers:",
+      "      - name: nginx",
+      "        image: nginx:1.14.2",
+      "        ports:",
+      "        - containerPort: 80"
+    ]
+  },
+  "k8s-configMap": {
+    "prefix": "k8s-configMap",
+    "body": [
+      "# A ConfigMap is an API object used to store non-confidential ",
+      "# data in key-value pairs. Pods can consume ConfigMaps as environment ",
+      "# variables, command-line arguments, or as configuration files in a volume.",
+      "",
+      "# A ConfigMap allows you to decouple environment-specific configuration ",
+      "# from your container images, so that your applications are easily portable.",
+      "---",
+      "apiVersion: v1",
+      "kind: ConfigMap",
+      "metadata:",
+      "  name: game-demo",
+      "data:",
+      "  # property-like keys; each key maps to a simple value",
+      "  player_initial_lives: \"3\"",
+      "  ui_properties_file_name: \"user-interface.properties\"",
+      "",
+      "  # file-like keys",
+      "  game.properties: |",
+      "    enemy.types=aliens,monsters",
+      "    player.maximum-lives=5    ",
+      "  user-interface.properties: |",
+      "    color.good=purple",
+      "    color.bad=yellow",
+      "    allow.textmode=true   "
+    ]
+  }
+}
+
