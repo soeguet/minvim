@@ -1,4 +1,5 @@
 return {
+    version = "^1.0.0",
     "mason-org/mason.nvim",
     opts = {
         ui = {
