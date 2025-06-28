@@ -25,13 +25,13 @@ return {
     },
     dependencies = {
         { "saghen/blink.cmp" },
-        { "nvim-java/nvim-java" },
+        -- { "nvim-java/nvim-java" },
         { "mason-org/mason.nvim" },
         { "neovim/nvim-lspconfig" }
     },
     config = function(_, opts)
 
-        require('java').setup()
+        -- require('java').setup()
 
         local lspconfig = require('lspconfig')
         for server, config in pairs(opts.servers) do
