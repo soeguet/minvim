@@ -1,5 +1,6 @@
 return {
     "AckslD/nvim-trevJ.lua",
+    enabled = false,
     dependencies = {
         "MunifTanjim/nui.nvim",
     },

@@ -53,10 +53,7 @@ return {
     },
     config = function(_, opts)
 
-        print('alarm111')
         require("mason-lspconfig").setup(opts)
-
-
 
         vim.api.nvim_create_autocmd('LspAttach', {
             group = vim.api.nvim_create_augroup('UserLspConfig', {}),
@@ -174,14 +171,12 @@ return {
 
         -- Diagnostic Keybindings (global, nicht client-spezifisch)
         vim.keymap.set('n', '<leader>cd', vim.diagnostic.open_float, { desc = 'Open Diagnostic Float' })
+        vim.keymap.set('n', '<c-j>', vim.diagnostic.open_float, { desc = 'Open Diagnostic Float' })
         vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Set Diagnostic List' })
 
         -- Springe zum ersten/letzten Diagnostic im Buffer
-        vm.keymap.set('n', '[D', function() vim.diagnostic.goto_prev({ count = math.huge }) end)
+        vim.keymap.set('n', '[D', function() vim.diagnostic.goto_prev({ count = math.huge }) end)
         vim.keymap.set('n', ']D', function() vim.diagnostic.goto_next({ count = math.huge }) end)
-
-        print('alarm')
-
 
         local lspconfig = require('lspconfig')
         for server, config in pairs(opts.servers) do

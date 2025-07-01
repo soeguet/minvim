@@ -1,0 +1,1 @@
+{"ifn":{"prefix":"ifn","body":["if err != nil {","\tlog.Fatal(err)","}${0}"]}}
