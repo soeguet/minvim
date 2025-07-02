@@ -10,7 +10,7 @@ return {
         harpoon:setup(opts)
         -- REQUIRED
 
-        vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end, { desc = "Add current file to harpoon" })
+        vim.keymap.set("n", "<leader>h", function() harpoon:list():add() end, { desc = "Add current file to harpoon" })
         vim.keymap.set("n", "<leader>eh", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "Toggle harpoon quick menu" })
 
         vim.keymap.set("n", "<leader>1", function() harpoon:list():select(1) end, { desc = "Select first harpoon file" })
