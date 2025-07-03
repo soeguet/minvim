@@ -12,7 +12,7 @@ return {
                 "lua_ls",
                 "rust_analyzer",
                 "pyright",
-                "ts_ls",
+                "vtsls",
                 "gopls",
                 "jdtls"
             },
@@ -31,7 +31,7 @@ return {
                     },
                 },
                 pyright = {},
-                ts_ls = {},
+                vtsls = {},
                 gopls = {},
                 jdtls = {
                     cmd = { "jdtls" },
@@ -145,7 +145,7 @@ return {
 
                     -- Document Highlighting (wenn unterstützt)
                     if client:supports_method('textDocument/documentHighlight') then
-                        vim.keymap.set('n', '<leader>h', vim.lsp.buf.document_highlight, buffer_options)
+                        vim.keymap.set('n', '<leader>hl', vim.lsp.buf.document_highlight, buffer_options)
                         vim.keymap.set('n', '<leader>H', vim.lsp.buf.clear_references, buffer_options)
 
                         -- Auto-highlight beim Cursor stillstand
