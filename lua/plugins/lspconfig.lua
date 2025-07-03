@@ -116,7 +116,7 @@ return {
 
                     -- Formatierung
                     if client:supports_method('textDocument/formatting') then
-                        vim.keymap.set('n', '<leader>ff', function()
+                        vim.keymap.set('v', '<leader>F', function()
                             vim.lsp.buf.format { async = true }
                         end, buffer_options)
 
