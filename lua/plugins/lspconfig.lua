@@ -1,9 +1,8 @@
 return {
     {
         "j-hui/fidget.nvim",
-        opts = {
-            -- options
-        },
+        enabled = false,
+        opts = {},
     },
     {
         "mason-org/mason-lspconfig.nvim",
@@ -116,8 +115,10 @@ return {
 
                     -- Formatierung
                     if client:supports_method('textDocument/formatting') then
-                        vim.keymap.set('v', '<leader>F', function()
+                        vim.keymap.set({ 'n', 'v' }, '<leader>F', function()
                             vim.lsp.buf.format { async = true }
+                            -- notify
+                            vim.notify('Buffer formatted', vim.log.levels.INFO, { title = 'LSP' })
                         end, buffer_options)
 
                         -- Auto-Format beim Speichern (optional)
@@ -131,7 +132,7 @@ return {
                     end
 
                     if client:supports_method('textDocument/rangeFormatting') then
-                        vim.keymap.set('v', '<leader>ff', function()
+                        vim.keymap.set('v', '<leader>F', function()
                             vim.lsp.buf.format { async = true }
                         end, buffer_options)
                     end

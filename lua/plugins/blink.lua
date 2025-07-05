@@ -42,7 +42,7 @@ return {
 
             completion = {
                 menu = { border = 'single' },
-                documentation = { window = { border = 'single' }, auto_show = true },
+                documentation = { window = { border = 'single' }, auto_show = false },
                 -- list = { selection = { preselect = false, auto_insert = true } },
                 list = { selection = { preselect = true, auto_insert = false } },
             },
@@ -101,6 +101,7 @@ return {
     },
     {
         'saghen/blink.indent',
+        enabled = false,
         --- @module 'blink.indent'
         --- @type blink.indent.Config
         opts = {

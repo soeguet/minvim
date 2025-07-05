@@ -1,7 +1,7 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter-context",
-        opts= {}
+        opts = {}
     },
     {
         "nvim-treesitter/nvim-treesitter",
@@ -9,8 +9,8 @@ return {
             --"nvim-treesitter/nvim-treesitter-textobjects",
             "nvim-treesitter/nvim-treesitter-context",
         },
-        config = function ()
-            require'nvim-treesitter.configs'.setup {
+        config = function()
+            require 'nvim-treesitter.configs'.setup {
                 ensure_installed = {
                     "bash",
                     "java",
@@ -47,6 +47,9 @@ return {
                         node_decremental = "<M-->",
                     },
                 },
+                highlight = {
+                    enabled = true
+                }
             }
         end
     }
