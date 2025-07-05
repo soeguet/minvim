@@ -9,8 +9,7 @@ return {
             --"nvim-treesitter/nvim-treesitter-textobjects",
             "nvim-treesitter/nvim-treesitter-context",
         },
-        config = function()
-            require 'nvim-treesitter.configs'.setup {
+        opts = {
                 ensure_installed = {
                     "bash",
                     "java",
@@ -48,9 +47,17 @@ return {
                     },
                 },
                 highlight = {
-                    enabled = true
-                }
-            }
+                    enable = true,
+                    custom_captures = {
+                        -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
+                        ["foo.bar"] = "Identifier",
+                    },
+                    -- Setting this to true or a list of languages will run `:h syntax` and tree-sitter at the same time.
+                    additional_vim_regex_highlighting = false,
+                },
+            },
+        config = function(_,opts)
+            require('nvim-treesitter.configs').setup(opts)
         end
     }
 }

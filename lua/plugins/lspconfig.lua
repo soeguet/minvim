@@ -180,11 +180,13 @@ return {
             -- Diagnostic Keybindings (global, nicht client-spezifisch)
             vim.keymap.set('n', '<leader>cd', vim.diagnostic.open_float, { desc = 'Open Diagnostic Float' })
             vim.keymap.set('n', '<c-j>', vim.diagnostic.open_float, { desc = 'Open Diagnostic Float' })
-            vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Set Diagnostic List' })
+            vim.keymap.set('n', '<leader>qd', vim.diagnostic.setloclist, { desc = 'Set Diagnostic List' })
 
             -- Springe zum ersten/letzten Diagnostic im Buffer
             vim.keymap.set('n', '[D', function() vim.diagnostic.goto_prev({ count = math.huge }) end)
             vim.keymap.set('n', ']D', function() vim.diagnostic.goto_next({ count = math.huge }) end)
+
+            vim.keymap.set("n", "<leader>qq", ":copen<cr>", { desc = "open quickfix" })
 
             local lspconfig = require('lspconfig')
             for server, config in pairs(opts.servers) do
@@ -195,6 +197,7 @@ return {
                 config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
                 lspconfig[server].setup(config)
             end
+
 
             -- Diagnostic Konfiguration
             -- vim.diagnostic.config({
