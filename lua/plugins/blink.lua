@@ -29,7 +29,10 @@ return {
             -- C-k: Toggle signature help (if signature.enabled = true)
             --
             -- See :h blink-cmp-config-keymap for defining your own keymap
-            keymap = { preset = 'enter' },
+            keymap = {
+                preset = 'enter',
+                ['<M-Space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+            },
             signature = { window = { border = 'single' } },
 
             appearance = {
@@ -42,7 +45,11 @@ return {
 
             completion = {
                 menu = { border = 'single' },
-                documentation = { window = { border = 'single' }, auto_show = false },
+                documentation = {
+                    window = { border = 'single' },
+                    auto_show = true,
+                    auto_show_delay_ms = 1500,
+                },
                 -- list = { selection = { preselect = false, auto_insert = true } },
                 list = { selection = { preselect = true, auto_insert = false } },
             },
