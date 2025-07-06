@@ -28,7 +28,7 @@ return {
                 file_ignore_patterns = {
                     'node_modules',
                     '%.pdf',
-                    '.git',
+                    '.git/',
                     '.cache',
                     '.next',
                     'dist',
