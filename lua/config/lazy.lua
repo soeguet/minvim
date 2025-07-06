@@ -39,6 +39,7 @@ require("lazy").setup({
 require("config.options")
 
 --vim.cmd([[colorscheme habamax]])
-vim.cmd("colorscheme kanagawa-wave")
+-- vim.cmd("colorscheme kanagawa-wave")
 -- vim.cmd("colorscheme cyberdream")
+vim.cmd("colorscheme vscode")
 

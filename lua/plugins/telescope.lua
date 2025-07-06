@@ -38,6 +38,7 @@ return {
                     'yarn%.lock', -- Lua pattern für yarn.lock
                     'package%-lock%.json',
                     'target',
+                    '%lock',
                 },
                 preview = {
                     treesitter = true,     -- Aktiviert Treesitter für Syntax-Highlighting
