@@ -6,7 +6,7 @@ return {
 		require("copilot").setup({
 			suggestion = {
 				enabled = true,
-				auto_trigger = true,
+				auto_trigger = false,
 				hide_during_completion = true,
 				debounce = 75,
 				trigger_on_accept = true,
@@ -14,11 +14,26 @@ return {
 					accept = "<TAB>",
 					accept_word = "<C-l>",
 					accept_line = false,
-					next = "<M-]>",
+					next = "<S-CR>",
 					prev = "<M-[>",
 					dismiss = "<C-]>",
 				},
 			},
+            panel = {
+                enabled = true,
+                auto_refresh = false,
+                keymap = {
+                    jump_prev = "[[",
+                    jump_next = "]]",
+                    accept = "<CR>",
+                    refresh = "gr",
+                    open = "<M-CR>"
+                },
+                layout = {
+                    position = "right",
+                    ratio = 0.4
+                },
+            },
 		})
 
         vim.api.nvim_set_hl(0, "CopilotSuggestion", {

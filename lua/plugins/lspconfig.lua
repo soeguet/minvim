@@ -1,7 +1,22 @@
 return {
     {
         "mason-org/mason-lspconfig.nvim",
+
         dependencies = {
+            {
+                "mason-org/mason.nvim",
+                opts = {
+                    ui = {
+                        icons = {
+                            package_installed = "✓",
+                            package_pending = "➜",
+                            package_uninstalled = "✗"
+                        }
+                    }
+                }
+            },
+            { "neovim/nvim-lspconfig" },
+            { "saghen/blink.cmp" },
             "yioneko/nvim-vtsls"
         },
         opts = {
@@ -10,10 +25,9 @@ return {
                 "rust_analyzer",
                 "pyright",
                 "gopls",
-                "jdtls",
                 "vtsls",
             },
-            automatic_enable = true,
+            automatic_enable = false,
             servers = {
                 lua_ls = {
                     settings = {
@@ -36,34 +50,18 @@ return {
                 --         },
                 --     },
                 -- },
-                jdtls = {
-                    cmd = { 
-                        "env", "JAVA_HOME=C:\\Users\\Osman.Soeguet\\.jdks\\azul-21.0.6", "jdtls",
-                    },
-                    root_dir = function(fname)
-                        return require('lspconfig.util').root_pattern('.git', 'mvnw', 'gradlew', 'pom.xml', 'build.gradle')(
-                            fname) or vim.fn.getcwd()
-                    end,
-                },
+                -- jdtls = {
+                --     cmd = { 
+                --         "env", "JAVA_HOME=C:\\Users\\Osman.Soeguet\\.jdks\\azul-21.0.6", "jdtls",
+                --     },
+                --     root_dir = function(fname)
+                --         return require('lspconfig.util').root_pattern('.git', 'mvnw', 'gradlew', 'pom.xml', 'build.gradle')(
+                --             fname) or vim.fn.getcwd()
+                --     end,
+                -- },
                 vtsls = {
                 }
             },
-        },
-        dependencies = {
-            {
-                "mason-org/mason.nvim",
-                opts = {
-                    ui = {
-                        icons = {
-                            package_installed = "✓",
-                            package_pending = "➜",
-                            package_uninstalled = "✗"
-                        }
-                    }
-                }
-            },
-            { "neovim/nvim-lspconfig" },
-            { "saghen/blink.cmp" },
         },
         config = function(_, opts)
             require("mason-lspconfig").setup(opts)
@@ -75,50 +73,20 @@ return {
                     local buffer_options = { buffer = args.buf }
 
                     -- LSP Keybindings nur wenn Client die Methode unterstützt
-                    if client:supports_method('textDocument/declaration') then
-                        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, buffer_options)
-                    end
-
-                    if client:supports_method('textDocument/definition') then
-                        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, buffer_options)
-                    end
-
-                    if client:supports_method('textDocument/hover') then
-                        vim.keymap.set('n', 'K', vim.lsp.buf.hover, buffer_options)
-                    end
-
-                    if client:supports_method('textDocument/implementation') then
-                        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, buffer_options)
-                    end
-
-                    if client:supports_method('textDocument/signatureHelp') then
-                        vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, buffer_options)
-                        vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, buffer_options)
-                    end
-
-                    if client:supports_method('textDocument/typeDefinition') then
-                        vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, buffer_options)
-                    end
-
-                    if client:supports_method('textDocument/rename') then
-                        vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, buffer_options)
-                    end
-
-                    if client:supports_method('textDocument/codeAction') then
-                        vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, buffer_options)
-                    end
-
-                    if client:supports_method('textDocument/references') then
-                        vim.keymap.set('n', 'gr', vim.lsp.buf.references, buffer_options)
-                    end
-
-                    if client:supports_method('textDocument/documentSymbol') then
-                        vim.keymap.set('n', 'gO', vim.lsp.buf.document_symbol, buffer_options)
-                    end
-
-                    if client:supports_method('workspace/symbol') then
-                        vim.keymap.set('n', '<leader>ws', vim.lsp.buf.workspace_symbol, buffer_options)
-                    end
+                    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, buffer_options)
+                    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, buffer_options)
+                    vim.keymap.set('n', 'K', vim.lsp.buf.hover, buffer_options)
+                    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, buffer_options)
+                    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, buffer_options)
+                    vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, buffer_options)
+                    vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, buffer_options)
+                    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, buffer_options)
+                    vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, buffer_options)
+                    vim.keymap.set('n', 'gr', vim.lsp.buf.references, buffer_options)
+                    vim.keymap.set('n', 'gO', vim.lsp.buf.document_symbol, buffer_options)
+                    vim.keymap.set('n', '<leader>ws', vim.lsp.buf.workspace_symbol, buffer_options)
+                    vim.keymap.set('n', '<leader>hl', vim.lsp.buf.document_highlight, buffer_options)
+                    vim.keymap.set('n', '<leader>H', vim.lsp.buf.clear_references, buffer_options)
 
                     -- Formatierung
                     if client:supports_method('textDocument/formatting') then
@@ -153,8 +121,6 @@ return {
 
                     -- Document Highlighting (wenn unterstützt)
                     if client:supports_method('textDocument/documentHighlight') then
-                        vim.keymap.set('n', '<leader>hl', vim.lsp.buf.document_highlight, buffer_options)
-                        vim.keymap.set('n', '<leader>H', vim.lsp.buf.clear_references, buffer_options)
 
                         -- Auto-highlight beim Cursor stillstand
                         vim.api.nvim_create_augroup('lsp_document_highlight', { clear = false })
