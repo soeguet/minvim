@@ -42,25 +42,6 @@ return {
                     },
                 },
                 pyright = {},
-                gopls = {},
-                -- ts_ls = {
-                --     settings = {
-                --         tsserver = {
-                --             filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-                --         },
-                --     },
-                -- },
-                -- jdtls = {
-                --     cmd = { 
-                --         "env", "JAVA_HOME=C:\\Users\\Osman.Soeguet\\.jdks\\azul-21.0.6", "jdtls",
-                --     },
-                --     root_dir = function(fname)
-                --         return require('lspconfig.util').root_pattern('.git', 'mvnw', 'gradlew', 'pom.xml', 'build.gradle')(
-                --             fname) or vim.fn.getcwd()
-                --     end,
-                -- },
-                vtsls = {
-                }
             },
         },
         config = function(_, opts)

@@ -33,7 +33,13 @@ return {
                 preset = 'enter',
                 ['<M-Space>'] = { 'show', 'show_documentation', 'hide_documentation' },
             },
-            signature = { window = { border = 'single' } },
+            signature = {
+                enabled = true,
+                window = {
+                    border = 'rounded',
+                    scrollbar = false,
+                }
+            },
 
             appearance = {
                 -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
@@ -44,7 +50,19 @@ return {
             -- (Default) Only show the documentation popup when manually triggered
 
             completion = {
-                menu = { border = 'single' },
+                menu = {
+                    border = 'single',
+                    draw = {
+                        columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
+                        components = {
+                            label_description = {
+                                width = { max = 50 },
+                                text = function(ctx) return ctx.label_description end,
+                                highlight = "BlinkCmpLabelDescription",
+                            },
+                        },
+                    },
+                },
                 documentation = {
                     window = { border = 'single' },
                     auto_show = true,

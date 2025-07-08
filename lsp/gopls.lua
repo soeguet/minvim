@@ -4,6 +4,12 @@ return {
 	root_markers = { "go.mod", "go.work", ".git" }, -- Markers to identify the root of the project
 	settings = {
 		gopls = {
+            completionDocumentation = true,
+            deepCompletion = true,
+            fuzzyMatching = true,
+            -- Diese könnten helfen:
+            completionBudget = "100ms",
+            matcher = "Fuzzy",
 			gofumpt = true,
 			codelenses = {
 				gc_details = false,
@@ -15,16 +21,16 @@ return {
 				upgrade_dependency = true,
 				vendor = true,
 			},
-			hints = {
-				assignVariableTypes = false,
-				compositeLiteralFields = false,
-				compositeLiteralTypes = false,
-				constantValues = false,
-				functionTypeParameters = false,
-				parameterNames = false,
-				rangeVariableTypes = false,
-			},
-			analyses = {
+            hints = {
+                assignVariableTypes = true,
+                compositeLiteralFields = true,
+                compositeLiteralTypes = true,
+                constantValues = true,
+                functionTypeParameters = true,
+                parameterNames = true,
+                rangeVariableTypes = true,
+            },
+            analyses = {
 				nilness = true,
 				unusedparams = true,
 				unusedwrite = true,
