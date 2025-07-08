@@ -1,19 +1,17 @@
 return {
     {
-        "j-hui/fidget.nvim",
-        enabled = false,
-        opts = {},
-    },
-    {
         "mason-org/mason-lspconfig.nvim",
+        dependencies = {
+            "yioneko/nvim-vtsls"
+        },
         opts = {
             ensure_installed = {
                 "lua_ls",
                 "rust_analyzer",
                 "pyright",
-                "vtsls",
                 "gopls",
-                "jdtls"
+                "jdtls",
+                "vtsls",
             },
             automatic_enable = true,
             servers = {
@@ -30,16 +28,25 @@ return {
                     },
                 },
                 pyright = {},
-                vtsls = {},
                 gopls = {},
+                -- ts_ls = {
+                --     settings = {
+                --         tsserver = {
+                --             filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+                --         },
+                --     },
+                -- },
                 jdtls = {
-                    cmd = { "jdtls" },
+                    cmd = { 
+                        "env", "JAVA_HOME=C:\\Users\\Osman.Soeguet\\.jdks\\azul-21.0.6", "jdtls",
+                    },
                     root_dir = function(fname)
-                        return require('lspconfig.util').root_pattern('.git', 'mvnw', 'gradlew', 'pom.xml',
-                            'build.gradle')(
+                        return require('lspconfig.util').root_pattern('.git', 'mvnw', 'gradlew', 'pom.xml', 'build.gradle')(
                             fname) or vim.fn.getcwd()
                     end,
                 },
+                vtsls = {
+                }
             },
         },
         dependencies = {

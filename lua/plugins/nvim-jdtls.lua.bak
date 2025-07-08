@@ -1,6 +1,6 @@
 return {
     "mfussenegger/nvim-jdtls",
-    enabled = false,
+    enabled = true,
     ft = { "java" },
     dependencies = {
         "williamboman/mason.nvim",

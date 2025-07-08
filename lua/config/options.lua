@@ -1,5 +1,8 @@
 local opt = vim.opt
 
+opt.secure = true
+opt.exrc = true
+
 opt.hlsearch = true -- Highlight search results
 opt.ignorecase = true -- Ignore case in search patterns
 opt.smartcase = true -- Override ignorecase if search pattern contains uppercase letters
@@ -22,7 +25,7 @@ opt.scrolloff = 8 -- Minimum number of screen lines to keep above and below the 
 opt.sidescrolloff = 8 -- Minimum number of screen columns to keep left and right of the cursor
 opt.signcolumn = "yes" -- Always show the sign column
 opt.cursorline = true -- Highlight the current line
-opt.termguicolors = true -- Enable 24-bit RGB colors in the terminal
+opt.termguicolors = false -- Enable 24-bit RGB colors in the terminal
 opt.splitbelow = true -- Open new horizontal splits below the current window
 opt.splitright = true -- Open new vertical splits to the right of the current window
 opt.laststatus = 3 -- Always show the status line
