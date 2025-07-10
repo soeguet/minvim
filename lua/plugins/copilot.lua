@@ -9,14 +9,14 @@ return {
 				auto_trigger = false,
 				hide_during_completion = true,
 				debounce = 75,
-				trigger_on_accept = true,
+				trigger_on_accept = false,
 				keymap = {
 					accept = "<TAB>",
 					accept_word = "<C-l>",
 					accept_line = false,
-					next = "<S-CR>",
-					prev = "<M-[>",
-					dismiss = "<C-]>",
+					next = "<c-a>",
+					prev = "<c-z>",
+					dismiss = "<c-x>",
 				},
 			},
             panel = {
