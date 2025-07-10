@@ -31,7 +31,7 @@ return {
             -- See :h blink-cmp-config-keymap for defining your own keymap
             keymap = {
                 preset = 'enter',
-                ['<M-Space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+                ['<c-q>'] = { 'show', 'show_documentation', 'hide_documentation' },
             },
             signature = {
                 enabled = true,
