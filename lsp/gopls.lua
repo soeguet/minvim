@@ -6,8 +6,6 @@ return {
 		gopls = {
             completionDocumentation = true,
             deepCompletion = true,
-            fuzzyMatching = true,
-            -- Diese könnten helfen:
             completionBudget = "100ms",
             matcher = "Fuzzy",
 			gofumpt = true,
