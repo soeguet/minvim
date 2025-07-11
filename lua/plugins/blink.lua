@@ -36,7 +36,7 @@ return {
             signature = {
                 enabled = true,
                 window = {
-                    border = 'rounded',
+                    border = 'none',
                     scrollbar = false,
                 }
             },
@@ -51,7 +51,7 @@ return {
 
             completion = {
                 menu = {
-                    border = 'single',
+                    border = 'none',
                     draw = {
                         columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
                         components = {
@@ -64,9 +64,9 @@ return {
                     },
                 },
                 documentation = {
-                    window = { border = 'single' },
+                    window = { border = 'none' },
                     auto_show = true,
-                    auto_show_delay_ms = 1500,
+                    auto_show_delay_ms = 250,
                 },
                 -- list = { selection = { preselect = false, auto_insert = true } },
                 list = { selection = { preselect = true, auto_insert = false } },
