@@ -36,7 +36,7 @@ return {
             signature = {
                 enabled = true,
                 window = {
-                    border = 'none',
+                    border = 'double',
                     scrollbar = false,
                 }
             },
@@ -51,7 +51,7 @@ return {
 
             completion = {
                 menu = {
-                    border = 'none',
+                    border = 'double',
                     draw = {
                         columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
                         components = {
@@ -64,7 +64,7 @@ return {
                     },
                 },
                 documentation = {
-                    window = { border = 'none' },
+                    window = { border = 'double' },
                     auto_show = true,
                     auto_show_delay_ms = 250,
                 },

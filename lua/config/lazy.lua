@@ -43,4 +43,4 @@ require("config.options")
 -- vim.cmd("colorscheme cyberdream")
 vim.cmd("colorscheme vscode")
 -- vim.cmd("colorscheme default")
-
+vim.cmd("colorscheme vague")

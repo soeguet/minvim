@@ -4,7 +4,9 @@ vim.lsp.enable({
 	-- "yamlls",
     "vtsls",
     "jdtls",
-    "pyright"
+    "pyright",
+    "dockerls",
+    "docker_compose_language_service"
 })
 
 return {}
