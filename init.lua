@@ -29,4 +29,3 @@ end
 
 vim.api.nvim_set_keymap("n", "<leader>lg", "<cmd>lua Lazygit_toggle()<CR>", {noremap = true, silent = true})
 
--- // Lazygit //

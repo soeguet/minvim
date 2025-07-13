@@ -1,3 +1,5 @@
+vim.api.nvim_create_user_command('Ex', 'Oil', {})
+
 local opt = vim.opt
 
 opt.secure = true
