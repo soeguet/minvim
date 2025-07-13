@@ -8,7 +8,12 @@ return {
     'stevearc/oil.nvim',
     ---@module 'oil'
     ---@type oil.SetupOpts
-    opts = {},
+    opts = {
+        keymaps = {
+            ["<C-p>"] = false,  -- Deaktiviert das Standard-Mapping
+            ["<C-k>"] = "actions.preview",  -- Beispiel: Ctrl+k für Preview
+        },
+    },
     -- Optional dependencies
     dependencies = { { "echasnovski/mini.icons", opts = {} } },
     -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
