@@ -1,1 +1,1 @@
-{"ifn":{"prefix":"ifn","body":["if err != nil {","\tlog.Fatal(err)","}${0}"]}}
+{"ifn":{"prefix":"ifn","body":["if err != nil {","\t${1:log.Fatal(err)}${0}","}"]},"if":{"body":["if ${1:} {","    ${0}","}"],"prefix":"if"}}

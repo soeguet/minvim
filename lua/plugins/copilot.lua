@@ -14,8 +14,8 @@ return {
 					accept = "<TAB>",
 					accept_word = "<C-l>",
 					accept_line = false,
-					next = "<c-a>",
-					prev = "<c-z>",
+					next = "",
+					prev = "",
 					dismiss = "<c-x>",
 				},
 			},
