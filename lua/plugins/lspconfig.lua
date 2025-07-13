@@ -56,7 +56,11 @@ return {
                     -- LSP Keybindings nur wenn Client die Methode unterstützt
                     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, buffer_options)
                     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, buffer_options)
-                    vim.keymap.set('n', 'K', vim.lsp.buf.hover, buffer_options)
+                    vim.keymap.set('n', 'K', function ()
+                       vim.lsp.buf.hover({
+                           border = 'double'
+                       })
+                    end, buffer_options)
                     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, buffer_options)
                     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, buffer_options)
                     vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, buffer_options)
@@ -102,7 +106,6 @@ return {
 
                     -- Document Highlighting (wenn unterstützt)
                     if client:supports_method('textDocument/documentHighlight') then
-
                         -- Auto-highlight beim Cursor stillstand
                         vim.api.nvim_create_augroup('lsp_document_highlight', { clear = false })
                         vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
@@ -154,19 +157,19 @@ return {
 
 
             -- Diagnostic Konfiguration
-            -- vim.diagnostic.config({
-            --     virtual_text = true,
-            --     signs = true,
-            --     underline = true,
-            --     update_in_insert = false,
-            --     severity_sort = true,
-            --     float = {
-            --         border = 'rounded',
-            --         source = 'always',
-            --         header = '',
-            --         prefix = '',
-            --     },
-            -- })
+            vim.diagnostic.config({
+                virtual_text = true,
+                signs = true,
+                underline = true,
+                update_in_insert = false,
+                severity_sort = true,
+                float = {
+                    border = 'double',
+                    source = 'always',
+                    header = '',
+                    prefix = '',
+                },
+            })
 
             -- Diagnostic Signs
             -- local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
