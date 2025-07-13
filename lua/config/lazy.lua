@@ -37,6 +37,7 @@ require("lazy").setup({
 })
 
 require("config.options")
+require("config.keymaps")
 
 --vim.cmd([[colorscheme habamax]])
 -- vim.cmd("colorscheme kanagawa-wave")
