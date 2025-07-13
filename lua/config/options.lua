@@ -49,3 +49,28 @@ opt.isfname:append("#") -- Allow '#' in file names
 if vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1 then
     opt.clipboard = "unnamed" -- Use the default clipboard on Windows
 end
+
+
+-- [[ close some filetypes with <q> ]]
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = {
+		'PlenaryTestPopup',
+		'help',
+		'lspinfo',
+		'man',
+		'notify',
+		'qf',
+		'query',
+		'spectre_panel',
+		'startuptime',
+		'tsplayground',
+		'neotest-output',
+		'checkhealth',
+		'neotest-summary',
+		'neotest-output-panel',
+	},
+	callback = function(event)
+		vim.bo[event.buf].buflisted = false
+		vim.keymap.set('n', 'q', '<cmd>close<cr>', { buffer = event.buf, silent = true })
+	end,
+})

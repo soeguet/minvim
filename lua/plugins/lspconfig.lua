@@ -28,21 +28,21 @@ return {
                 "vtsls",
             },
             automatic_enable = false,
-            servers = {
-                lua_ls = {
-                    settings = {
-                        Lua = {
-                            diagnostics = {
-                                globals = { "vim" },
-                            },
-                            workspace = {
-                                checkThirdParty = false,
-                            },
-                        },
-                    },
-                },
-                pyright = {},
-            },
+            -- servers = {
+            --     lua_ls = {
+            --         settings = {
+            --             Lua = {
+            --                 diagnostics = {
+            --                     globals = { "vim" },
+            --                 },
+            --                 workspace = {
+            --                     checkThirdParty = false,
+            --                 },
+            --             },
+            --         },
+            --     },
+            --     pyright = {},
+            -- },
         },
         config = function(_, opts)
             require("mason-lspconfig").setup(opts)
@@ -145,15 +145,15 @@ return {
 
             vim.keymap.set("n", "<leader>qq", ":copen<cr>", { desc = "open quickfix" })
 
-            local lspconfig = require('lspconfig')
-            for server, config in pairs(opts.servers) do
-                if server == "jdtls" then
-                    return true
-                end
-
-                config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
-                lspconfig[server].setup(config)
-            end
+            -- local lspconfig = require('lspconfig')
+            -- for server, config in pairs(opts.servers) do
+            --     if server == "jdtls" then
+            --         return true
+            --     end
+            --
+            --     config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
+            --     lspconfig[server].setup(config)
+            -- end
 
 
             -- Diagnostic Konfiguration
