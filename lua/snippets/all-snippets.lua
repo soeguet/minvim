@@ -53,12 +53,16 @@ ls.add_snippets("all", {
 
     postfix({
         trig = '.var',
-        match_pattern = '[%w%.%_%-%(%)]%+$',
+        match_pattern = '^.+$',
     }, {
         d(1, function(_, parent)
+            local prefix = parent.snippet.env.POSTFIX_MATCH
+
+            print('prefix', prefix)
+
             return sn(
                 1,
-                fmt('local {} = ' .. parent.snippet.env.POSTFIX_MATCH, {
+                fmt('local {} = ' .. prefix, {
                     i(1, 'name'),
                 })
             )
@@ -91,7 +95,7 @@ ls.add_snippets("all", {
     }, {
         d(1, function(_, parent)
             local matched = parent.snippet.env.POSTFIX_MATCH
-            print('matched',matched)
+            print('matched', matched)
             return sn(
                 nil,
                 fmt("({})", { t({ matched }) })

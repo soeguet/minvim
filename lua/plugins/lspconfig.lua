@@ -1,51 +1,35 @@
 return {
     {
-        "mason-org/mason-lspconfig.nvim",
+        'mason-org/mason-lspconfig.nvim',
 
         dependencies = {
             {
-                "mason-org/mason.nvim",
+                'mason-org/mason.nvim',
                 opts = {
                     ui = {
                         icons = {
-                            package_installed = "✓",
-                            package_pending = "➜",
-                            package_uninstalled = "✗"
+                            package_installed = '✓',
+                            package_pending = '➜',
+                            package_uninstalled = '✗'
                         }
                     }
                 }
             },
-            { "neovim/nvim-lspconfig" },
-            { "saghen/blink.cmp" },
-            "yioneko/nvim-vtsls"
+            { 'neovim/nvim-lspconfig' },
+            { 'mfussenegger/nvim-jdtls' }
         },
         opts = {
             ensure_installed = {
-                "lua_ls",
-                "rust_analyzer",
-                "pyright",
-                "gopls",
-                "vtsls",
+                'lua_ls',
+                'rust_analyzer',
+                'pyright',
+                'gopls',
+                'vtsls',
             },
             automatic_enable = false,
-            -- servers = {
-            --     lua_ls = {
-            --         settings = {
-            --             Lua = {
-            --                 diagnostics = {
-            --                     globals = { "vim" },
-            --                 },
-            --                 workspace = {
-            --                     checkThirdParty = false,
-            --                 },
-            --             },
-            --         },
-            --     },
-            --     pyright = {},
-            -- },
         },
         config = function(_, opts)
-            require("mason-lspconfig").setup(opts)
+            require('mason-lspconfig').setup(opts)
 
             vim.api.nvim_create_autocmd('LspAttach', {
                 group = vim.api.nvim_create_augroup('UserLspConfig', {}),
@@ -143,18 +127,7 @@ return {
             vim.keymap.set('n', '[D', function() vim.diagnostic.goto_prev({ count = math.huge }) end)
             vim.keymap.set('n', ']D', function() vim.diagnostic.goto_next({ count = math.huge }) end)
 
-            vim.keymap.set("n", "<leader>qq", ":copen<cr>", { desc = "open quickfix" })
-
-            -- local lspconfig = require('lspconfig')
-            -- for server, config in pairs(opts.servers) do
-            --     if server == "jdtls" then
-            --         return true
-            --     end
-            --
-            --     config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
-            --     lspconfig[server].setup(config)
-            -- end
-
+            vim.keymap.set('n', '<leader>qq', ':copen<cr>', { desc = 'open quickfix' })
 
             -- Diagnostic Konfiguration
             vim.diagnostic.config({
@@ -172,9 +145,9 @@ return {
             })
 
             -- Diagnostic Signs
-            -- local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
+            -- local signs = { Error = '󰅚 ', Warn = '󰀪 ', Hint = '󰌶 ', Info = ' ' }
             -- for type, icon in pairs(signs) do
-            --     local hl = "DiagnosticSign" .. type
+            --     local hl = 'DiagnosticSign' .. type
             --     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
             -- end
         end
