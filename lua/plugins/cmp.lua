@@ -54,7 +54,8 @@ return {
                     --
                     ["<CR>"] = cmp.mapping({
                         i = function(fallback)
-                            if cmp.visible() and cmp.get_active_entry() then
+                            -- if cmp.visible() and cmp.get_active_entry() then
+                            if cmp.visible()  then
                                 cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
                             else
                                 fallback()
@@ -91,7 +92,7 @@ return {
                     { name = 'buffer' },
                 }),
                 experimental = {
-                    ghost_text = true,
+                    ghost_text = false
                 },
             }
         )
