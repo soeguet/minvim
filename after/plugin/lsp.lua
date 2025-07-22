@@ -7,7 +7,8 @@ local servers = {
     'docker_compose_language_service'
 }
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities() --nvim-cmp
+-- local capabilities = require('cmp_nvim_lsp').default_capabilities() --nvim-cmp
+local capabilities = require('blink.cmp').get_lsp_capabilities()
 local lsp_attach = function(client, buf)
     -- Example maps, set your own with vim.api.nvim_buf_set_keymap(buf, 'n', <lhs>, <rhs>, { desc = <desc> })
     -- or a plugin like which-key.nvim
@@ -29,8 +30,6 @@ local lsp_attach = function(client, buf)
 end
 
 
--- local capabilities = require('blink.cmp').get_lsp_capabilities()
---
 for _, server in ipairs(servers) do
     if server ~= 'jdtls' then
         vim.lsp.config(server, {
