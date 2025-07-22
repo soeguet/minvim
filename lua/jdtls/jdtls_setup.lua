@@ -255,7 +255,7 @@ function M:setup()
         -- This is the default if not provided, you can remove it. Or adjust as needed.
         -- One dedicated LSP server & client will be started per unique root_dir
         -- root_dir = require('jdtls.setup').find_root({ '.git', 'mvnw', 'gradlew' }),
-        root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew", "pom.xml" }),
+        root_dir = require("jdtls.setup").find_root({ ".git", ".nvim.lua" })
     }
 
     require('jdtls').start_or_attach(config)

@@ -34,6 +34,7 @@ end
 for _, server in ipairs(servers) do
     if server ~= 'jdtls' then
         vim.lsp.config(server, {
+            root_markers = {'.nvim.lua','.git/'},
             capabilities = capabilities,
             on_attach = lsp_attach,
         })
