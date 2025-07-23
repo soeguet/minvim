@@ -51,8 +51,10 @@ return {
                 preset = 'enter',
                 ['<c-q>'] = { 'show', 'show_documentation', 'hide_documentation' },
                 ['<CR>'] = { 'accept', 'fallback' },
-                ['<Tab>'] = { 'snippet_forward', 'fallback' },
-                ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
+                ['<Tab>'] = { 'fallback' },
+                ['<S-Tab>'] = { 'fallback' },
+                ['<c-l>'] = { 'snippet_forward', 'fallback' },
+                ['<c-h>'] = { 'snippet_backward', 'fallback' },
             },
             signature = {
                 enabled = true,
