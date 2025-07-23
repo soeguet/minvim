@@ -9,7 +9,8 @@ local servers = {
 
 -- local capabilities = require('cmp_nvim_lsp').default_capabilities() --nvim-cmp
 local capabilities = require('blink.cmp').get_lsp_capabilities()
-local lsp_attach = function(client, buf)
+
+local lsp_attach = function(_, buf)
     -- Example maps, set your own with vim.api.nvim_buf_set_keymap(buf, 'n', <lhs>, <rhs>, { desc = <desc> })
     -- or a plugin like which-key.nvim
     -- <lhs>        <rhs>                        <desc>
@@ -28,7 +29,6 @@ local lsp_attach = function(client, buf)
     vim.api.nvim_buf_set_option(buf, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
     vim.api.nvim_buf_set_option(buf, 'tagfunc', 'v:lua.vim.lsp.tagfunc')
 end
-
 
 for _, server in ipairs(servers) do
     if server ~= 'jdtls' then

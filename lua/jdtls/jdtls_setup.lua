@@ -8,7 +8,7 @@ local function custom_cwd()
     local cwd = {
 
         -- 💀
-        '/usr/lib/jvm/java-21-openjdk-amd64/bin/java',
+        '/usr/lib/jvm/java-21-openjdk/bin/java',
 
         '-Declipse.application=org.eclipse.jdt.ls.core.id1',
         '-Dosgi.bundles.defaultStartLevel=4',

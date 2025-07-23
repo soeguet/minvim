@@ -1,3 +1,4 @@
+-- Copilot configuration for Neovim 
 return {
 	"zbirenbaum/copilot.lua",
 	cmd = "Copilot",
@@ -6,21 +7,21 @@ return {
 		require("copilot").setup({
 			suggestion = {
 				enabled = true,
-				auto_trigger = false,
+				auto_trigger = true,
 				hide_during_completion = true,
 				debounce = 75,
 				trigger_on_accept = false,
 				keymap = {
-					accept = "<TAB>",
-					accept_word = "<C-l>",
-					accept_line = false,
-					next = "<c-]>",
-					prev = "<C-/>",
-					dismiss = "<c-x>",
+					accept = "<M-CR>",
+					accept_word = "<M-l>",
+					accept_line = "<M-k>",
+					next = "<M-Bslash>",
+					prev = "<M-[>",
+					dismiss = "<M-x>",
 				},
 			},
             panel = {
-                enabled = true,
+                enabled = false,
                 auto_refresh = false,
                 keymap = {
                     jump_prev = "[[",

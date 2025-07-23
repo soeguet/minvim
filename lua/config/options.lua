@@ -17,6 +17,7 @@ opt.shiftwidth = 4 -- Number of spaces to use for each step of (auto)indent
 opt.softtabstop = 4 -- Number of spaces that a <Tab> counts for while editing
 opt.expandtab = true -- Use spaces instead of tabs
 opt.smartindent = true -- Enable smart indentation
+-- opt.paste = true :::: CAVE: das hier laesst einen im insert mode in telescope nicht zum item springen
 opt.autoindent = true -- Copy indent from current line when starting a new line
 opt.backup = false -- Disable backup files
 opt.writebackup = false -- Disable backup files on write

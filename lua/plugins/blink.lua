@@ -1,5 +1,21 @@
 -- return {}
 
+-- Hide Copilot on suggestion
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'BlinkCmpMenuOpen',
+  callback = function()
+    require("copilot.suggestion").dismiss()
+    vim.b.copilot_suggestion_hidden = true
+  end,
+})
+
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'BlinkCmpMenuClose',
+  callback = function()
+    vim.b.copilot_suggestion_hidden = false
+  end,
+})
+
 return {
     {
         'saghen/blink.cmp',
@@ -34,9 +50,9 @@ return {
             keymap = {
                 preset = 'enter',
                 ['<c-q>'] = { 'show', 'show_documentation', 'hide_documentation' },
-
-                ['<CR>'] = { 'snippet_forward','accept', 'fallback' },
-
+                ['<CR>'] = { 'accept', 'fallback' },
+                ['<Tab>'] = { 'snippet_forward', 'fallback' },
+                ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
             },
             signature = {
                 enabled = true,
